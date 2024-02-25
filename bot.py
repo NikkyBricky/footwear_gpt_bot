@@ -202,7 +202,7 @@ def ask_gpt(message):
     else:  # если запрос успешно пришел
         bot.reply_to(message, answer_gpt[1], reply_markup=continue_keyboard)
 
-        logging.info("Ответ нейросети успешно отправлен")
+        logging.info("Ответ нейросети успешно доставлен")
 
     bot.register_next_step_handler(message, ask_gpt)
 

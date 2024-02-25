@@ -25,7 +25,7 @@ class GPT:
         tokens_in_quest = self.count_tokens(t_user_content)  # подсчет токенов (запроса на английском языке)
         if tokens_in_quest > self.MAX_TOKENS_IN_QUEST:
             gpt_answer = ""
-            return False, "Текст слишком большой! Пожалуйста, переформулируйте ваш вопрос.", gpt_answer
+            return False, "Текст слишком большой! Пожалуйста, переформулируйте Ваш вопрос.", gpt_answer
 
         if user_content.lower() == "продолжи!":
             assistant_content = " " + gpt_answer  # вносим историю ответов нейросети
@@ -60,7 +60,7 @@ class GPT:
             if result == "":
                 gpt_answer = ""
                 return False,  ("Ответ окончен.\n\n"
-                                "Жду Ваших вопросов!"), gpt_answer
+                                "Жду Ваши вопросы!"), gpt_answer
 
             t_result = translator.translate(f'{result}', src='en', dest='ru').text
             gpt_answer += result
