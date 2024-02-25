@@ -28,7 +28,7 @@ logging.basicConfig(
 def send_logs(message):
     user_id = message.chat.id
 
-    if user_id == 922598615:
+    if user_id == ...:  # id админа бота в тг (int)
         try:
 
             with open("log_file.txt", "rb") as f:
