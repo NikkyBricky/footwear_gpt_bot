@@ -7,7 +7,7 @@ This a telegram bot that provides help in choosing footwear on any disire. Just 
 # Usage:
 if you want to make your bot with the functions like here, I suggest you to:
  1. Clone this repository
- 2. Create .env file with TOKEN variable
+ 2. Add to example.env file a valid TOKEN 
  3. Insert admin`s id in send_log function in bot.py
  4. Use python interpreter with version <=3.10
 
