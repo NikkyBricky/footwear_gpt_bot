@@ -16,6 +16,7 @@ if you just want to see it work:
 
 # Sources:
 model used in my bot: mistralai/Mistral-7B-Instruct-v0.2
+
 [link to git](https://github.com/NikkyBricky/footwear_gpt_bot.git)
 
 Enjoy!
