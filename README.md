@@ -11,7 +11,11 @@ if you want to make your bot with the functions like here, I suggest you to:
 
 if you just want to see it work:
  1. go to https://t.me/footwear_gpt_bot
- 2. Ask yout questions
+ 2. Ask your questions
  3. Receive detailed answers!
+
+# Sources:
+model used in my bot: mistralai/Mistral-7B-Instruct-v0.2
+[link to git](https://github.com/NikkyBricky/footwear_gpt_bot.git)
 
 Enjoy!
