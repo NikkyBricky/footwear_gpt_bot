@@ -8,6 +8,7 @@ This a telegram bot that provides help in choosing footwear on any disire. Just 
 if you want to make your bot with the functions like here, I suggest you to:
  1. Clone this repository
  2. Create .env file with TOKEN variable
+3. use python interpreter with version <=3.10
 
 if you just want to see it work:
  1. go to https://t.me/footwear_gpt_bot
