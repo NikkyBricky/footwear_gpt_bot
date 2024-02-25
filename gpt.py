@@ -1,3 +1,5 @@
+import logging
+
 import requests
 from googletrans import Translator
 from transformers import AutoTokenizer
@@ -35,23 +37,28 @@ class GPT:
             task = t_user_content
             gpt_answer = ""
             assistant_content = " "
-
-        resp = requests.post(
-            # эндпоинт
-            url=self.URL,
-            # заголовок
-            headers=self.HEADERS,
-            # тело запроса
-            json={
-                "messages": [
-                    {"role": "system", "content": self.system_content},
-                    {"role": "user", "content": task},
-                    {"role": "assistant", "content": assistant_content}
-                ],
-                "temperature": self.TEMPERATURE,
-                "max_tokens": self.MAX_TOKENS_IN_ANS,
-            }
-        )
+        try:
+            resp = requests.post(
+                # эндпоинт
+                url=self.URL,
+                # заголовок
+                headers=self.HEADERS,
+                # тело запроса
+                json={
+                    "messages": [
+                        {"role": "system", "content": self.system_content},
+                        {"role": "user", "content": task},
+                        {"role": "assistant", "content": assistant_content}
+                    ],
+                    "temperature": self.TEMPERATURE,
+                    "max_tokens": self.MAX_TOKENS_IN_ANS,
+                }
+            )
+        except requests.exceptions.ConnectionError:
+            logging.critical("подключение к нейросети отсутствует")
+            gpt_answer = ""
+            return False, ("Кажется, я подзабыл язык нейросетей и не могу к ним подключиться."
+                           " Пожалуйста, зайдите чуть позже."), gpt_answer
 
         # Печатаем ответ
         if resp.status_code == 200 and 'choices' in resp.json():
@@ -66,8 +73,9 @@ class GPT:
             gpt_answer += result
             return True, t_result, gpt_answer, result
         else:
+            gpt_answer = ""
             return False, ("Не удалось получить ответ от нейросети.\n"
-                           f"Текст ошибки: {resp.json()}")
+                           f"Текст ошибки: {resp.json()}"), gpt_answer
 
     @staticmethod
     def count_tokens(prompt):
